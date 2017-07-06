@@ -24,4 +24,6 @@ public interface IUserService {
     public ServerResponse<User>  updateUserInformation(User user);
 
     public ServerResponse<User> getUserInformationByUserid(Integer id);
+
+    public ServerResponse<String> checkLoginUserRole(User user,int Role);
 }

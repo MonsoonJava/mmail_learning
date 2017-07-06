@@ -17,13 +17,14 @@ import javax.servlet.http.HttpSession;
  * Created by asus on 2017/7/4.
  */
 @Controller
-@RequestMapping(value = "/manager/user")
+@RequestMapping(value = "/manage/user")
 public class ManagerController {
 
     @Autowired
     private IUserService iUserService;
 
     @RequestMapping(value = "/login.do",method = RequestMethod.POST)
+    @ResponseBody
     public ServerResponse<User> managerLogin(HttpSession session,@RequestParam(value = "username") String username, @RequestParam(value = "password")String password){
         ServerResponse<User> userServerResponse = iUserService.doLogin(username, password);
         if(userServerResponse.isSuccess()){

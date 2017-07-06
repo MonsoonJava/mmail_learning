@@ -172,4 +172,14 @@ public class IUserServiceImpl implements IUserService{
         user.setPassword(StringUtils.EMPTY);
         return ServerResponse.getServerResponseSuccess(user);
     }
+
+
+    @Override
+    public ServerResponse<String> checkLoginUserRole(User user,int Role){
+        if(user.getRole() == Role){
+            return ServerResponse.getServerResponseSuccess();
+        }
+        return ServerResponse.getServerResponseError();
+    }
+
 }

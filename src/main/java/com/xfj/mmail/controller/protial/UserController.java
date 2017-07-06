@@ -6,6 +6,7 @@ import com.xfj.mmail.common._Const;
 import com.xfj.mmail.pojo.User;
 import com.xfj.mmail.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -17,6 +18,7 @@ import javax.servlet.http.HttpSession;
  * Created by asus on 2017/7/2.
  */
 @RequestMapping(value = "/user")
+@Controller
 public class UserController {
 
     @Autowired
@@ -99,6 +101,7 @@ public class UserController {
     }
 
     @RequestMapping(value = "/update_information.do",method = RequestMethod.POST)
+    @ResponseBody
     public ServerResponse<User> updateInformation(HttpSession session,User user){
         User loginUser = (User)session.getAttribute(_Const.CURRENT_LOGIN_USER);
         if(null == loginUser) {
@@ -114,7 +117,7 @@ public class UserController {
     }
 
 
-    @RequestMapping(value = "get_information.do",method = RequestMethod.POST)
+    @RequestMapping(value = "/get_information.do",method = RequestMethod.POST)
     @ResponseBody
     public ServerResponse<User> getUserInformation(HttpSession session){
         User loginUser = (User)session.getAttribute(_Const.CURRENT_LOGIN_USER);
